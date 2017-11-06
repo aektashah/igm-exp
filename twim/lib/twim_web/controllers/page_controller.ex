@@ -3,13 +3,10 @@ defmodule TwimWeb.PageController do
 	require Logger
 
   def index(conn, _params) do
-		creds = OAuther.credentials(consumer_key: System.get_env("CONSUMER_KEY"), consumer_secret: System.get_env("CONSUMER_SECRET"),
-			token: System.get_env("TOKEN"), token_secret: System.get_env("TOKEN_SECRET"))
-		params = OAuther.sign("post", "https://api.twitter.com/1.1/statuses/lookup.json", [], creds)
-		header = to_keyword_list(params)
-		Logger.debug "#{inspect(header)}"
-		response = HTTPotion.post "https://api.twitter.com/1.1/statuses/lookup.json", 
-			[body: "id=485086311205048320", headers: header]
+		creds = OAuther.credentials(consumer_key: System.get_env("CONSUMER_KEY"), consumer_secret: System.get_env("CONSUMER_SECRET"),	token: System.get_env("TOKEN"), token_secret: System.get_env("TOKEN_SECRET"))
+		params = OAuther.sign("post", "https://api.twitter.com/1.1/statuses/lookup.json", [{"id", 485086311205048320}], creds)
+		{header, req_params} = OAuther.header(params)
+		response = :hackney.post("https://api.twitter.com/1.1/statuses/lookup.json", [header], {:form, req_params})
 		Logger.debug "RESPONSE: #{inspect(response)}"
     render conn, "index.html"
   end

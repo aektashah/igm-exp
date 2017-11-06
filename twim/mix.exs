@@ -20,7 +20,7 @@ defmodule Twim.Mixfile do
   def application do
     [
       mod: {Twim.Application, []},
-      extra_applications: [:httpotion, :logger, :runtime_tools]
+      extra_applications: [:hackney, :logger, :runtime_tools]
     ]
   end
 
@@ -42,7 +42,7 @@ defmodule Twim.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:oauther, "~> 1.1"},
-      {:httpotion, "~> 3.0.2"}
+      {:hackney, "~> 1.7"}
     ]
   end
 
