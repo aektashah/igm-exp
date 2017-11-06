@@ -12,7 +12,7 @@ config :twim,
 # Configures the endpoint
 config :twim, TwimWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "ZlEGubbCB87E3Ud0xJ3WDSiQWNZWjSphWTUZK8+WfXNYpdvX20gikLO0WJtZlX/K",
+  secret_key_base: "Ho1pM7sHM1/e1C3Quw3vhtP6XeGC7PTtTJq+Z0F/xAKSUNbyISaCUR9OFLAGRY7I",
   render_errors: [view: TwimWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Twim.PubSub,
            adapter: Phoenix.PubSub.PG2]

@@ -56,8 +56,3 @@ config :twim, Twim.Repo,
   database: "twim_dev",
   hostname: "localhost",
   pool_size: 10
-
-config :twim, Twitter,
-  client_id: System.get_env("TWITTER_CLIENT_ID"),
-  client_secret: System.get_env("TWITTER_CLIENT_SECRET"),
-  redirect_uri: System.get_env("TWITTER_REDIRECT_URI")
